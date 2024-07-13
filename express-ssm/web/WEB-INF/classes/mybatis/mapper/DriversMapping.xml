@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.DriversMapper">
+    <resultMap id="BaseResultMap" type="com.demo.entity.Drivers">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="loginname" jdbcType="VARCHAR" property="loginname" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="sex" jdbcType="INTEGER" property="sex" />
+        <result column="age" jdbcType="INTEGER" property="age" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
+        <result column="drivinglicense" jdbcType="INTEGER" property="drivinglicense" />
+        <result column="entry_day" jdbcType="TIMESTAMP" property="entryDay" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        `id`, `loginname`, `password`, `username`, `sex`, `age`, `phone`, `drivinglicense`, `entry_day`
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from drivers
+        where `id` = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from drivers
+        where `id` = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.demo.entity.Drivers">
+        insert into drivers (`loginname`, `password`, `username`, `sex`, `age`, `phone`, `drivinglicense`, `entry_day`)
+        values (#{loginname,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{drivinglicense,jdbcType=INTEGER}, #{entryDay,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.demo.entity.Drivers">
+        insert into drivers
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="loginname != null">
+                `loginname`,
+            </if>
+            <if test="password != null">
+                `password`,
+            </if>
+            <if test="username != null">
+                `username`,
+            </if>
+            <if test="sex != null">
+                `sex`,
+            </if>
+            <if test="age != null">
+                `age`,
+            </if>
+            <if test="phone != null">
+                `phone`,
+            </if>
+            <if test="drivinglicense != null">
+                `drivinglicense`,
+            </if>
+            <if test="entryDay != null">
+                `entry_day`,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="loginname != null">
+                #{loginname,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=INTEGER},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="drivinglicense != null">
+                #{drivinglicense,jdbcType=INTEGER},
+            </if>
+            <if test="entryDay != null">
+                #{entryDay,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.demo.entity.Drivers">
+        update drivers
+        <set>
+            <if test="loginname != null">
+                `loginname` = #{loginname,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                `password` = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                `username` = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                `sex` = #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="age != null">
+                `age` = #{age,jdbcType=INTEGER},
+            </if>
+            <if test="phone != null">
+                `phone` = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="drivinglicense != null">
+                `drivinglicense` = #{drivinglicense,jdbcType=INTEGER},
+            </if>
+            <if test="entryDay != null">
+                `entry_day` = #{entryDay,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where `id` = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.demo.entity.Drivers">
+        update drivers
+        set
+        `loginname` = #{loginname,jdbcType=VARCHAR},
+        `password` = #{password,jdbcType=VARCHAR},
+        `username` = #{username,jdbcType=VARCHAR},
+        `sex` = #{sex,jdbcType=INTEGER},
+        `age` = #{age,jdbcType=INTEGER},
+        `phone` = #{phone,jdbcType=VARCHAR},
+        `drivinglicense` = #{drivinglicense,jdbcType=INTEGER},
+        `entry_day` = #{entryDay,jdbcType=TIMESTAMP}
+        where `id` = #{id,jdbcType=INTEGER}
+    </update>
+    <select id="query" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List" />
+        from drivers
+        <where>
+            <if test="loginname != null">
+                and `loginname` = #{loginname,jdbcType=VARCHAR}
+            </if>
+            <if test="password != null">
+                and `password` = #{password,jdbcType=VARCHAR}
+            </if>
+            <if test="username != null">
+                and `username` = #{username,jdbcType=VARCHAR}
+            </if>
+            <if test="sex != null">
+                and `sex` = #{sex,jdbcType=INTEGER}
+            </if>
+            <if test="age != null">
+                and `age` = #{age,jdbcType=INTEGER}
+            </if>
+            <if test="phone != null">
+                and `phone` = #{phone,jdbcType=VARCHAR}
+            </if>
+            <if test="drivinglicense != null">
+                and `drivinglicense` = #{drivinglicense,jdbcType=INTEGER}
+            </if>
+            <if test="entryDay != null">
+                and `entry_day` = #{entryDay,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+    <select id="login" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List" />
+        from drivers
+        where loginname = #{loginname,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
+    </select>
+    <select id="statistics" resultType="java.util.HashMap">
+        <![CDATA[
+            SELECT drivers.`username`, invoice.send_time AS xx, COUNT(1) AS yy
+            FROM invoice, drivers
+            WHERE invoice.`driver` = #{derversId}
+            AND send_time >= #{startDate}
+            AND send_time <= #{endDate}
+            AND invoice.`driver` = drivers.id
+            GROUP BY xx
+        ]]>
+    </select>
+</mapper>

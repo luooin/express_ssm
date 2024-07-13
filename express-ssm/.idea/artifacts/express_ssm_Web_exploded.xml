@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="express-ssm:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/express-ssm_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="express-ssm/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="express-ssm" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
